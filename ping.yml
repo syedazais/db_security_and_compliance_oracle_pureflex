@@ -10,15 +10,16 @@
       grdapi_command: ps -ef|grep java
       
       shell: grdapi_command >> test.log
-      register: grdapi_command
+      register: grdapi_command_op
+      
       shell: cat test.log
-      register: cat
-      become: yes
+      register: catop
+      
       
    - name: print grdapi_command and cat
      debug: 
-      var: grdapi_command
-      var: cat
+      var: grdapi_command_op
+      var: catop
       
    - name: execute hostname
      command: hostname
@@ -36,8 +37,6 @@
      debug: 
       var: meminfo
       
-     vars:
-      file_name: '/tmp/test'
    - file:
-        path: '{{file_name}}'
-        state: touch
+      path: '/tmp/test'
+      state: touch
