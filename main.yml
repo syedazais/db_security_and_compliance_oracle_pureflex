@@ -1,8 +1,12 @@
-
 ---
 
 - hosts: all
   gather_facts: true
   become: true
   tasks:
-    - ping:
+  - name: get the memtotalkb
+    shell: cat /proc/meminfo
+    register: meminfo
+  - name: print results
+    debug: 
+     var: meminfo
