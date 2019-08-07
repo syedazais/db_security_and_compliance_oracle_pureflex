@@ -4,4 +4,13 @@
   gather_facts: true
   become: true
   tasks:
-    - ping:
+   - name: grdapi command
+     set_fact:
+      grdapi_command: ps -ef|grep java
+      shell: grdapi_command
+      register: grdapi_command
+      become: yes
+      
+   - name: print results
+     debug: 
+      var: grdapi_command
