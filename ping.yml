@@ -11,13 +11,12 @@
       shell: cat test.log
       register: grdapi_command
       become: yes
-      
    - name: print results
      debug: 
       var: grdapi_command
-      
-   - name: print cat   
-   - command: 'cat test.log'
-     register: cat
-   - debug:
-      var: cat
+   - name: print hostname
+     command: hsotname
+     register: hostnameReg
+   - name: print hostname 
+     debug:
+      var: hostnameReg
