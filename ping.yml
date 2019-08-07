@@ -15,7 +15,7 @@
      debug: 
       var: grdapi_command
    - name: print hostname
-     command: hsotname
+     command: hostname
      register: hostnameReg
    - name: print hostname 
      debug:
