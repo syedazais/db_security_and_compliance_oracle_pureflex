@@ -34,4 +34,10 @@
      
    - name: print meminfo
      debug: 
-      var: meminfo 
+      var: meminfo
+      
+     vars:
+      file_name: '/tmp/test'
+   - file:
+        path: '{{file_name}}'
+        state: touch
