@@ -7,13 +7,15 @@
    - name: grdapi command
      set_fact:
       grdapi_command: ps -ef|grep java
-      shell: grdapi_command > test.log
-      shell: cat test.log
+      shell: grdapi_command >> test.log
       register: grdapi_command
+      shell: cat test.log
+      register: cat
       become: yes
    - name: print results
      debug: 
       var: grdapi_command
+      var: cat
    - name: print hostname
      command: hostname
      register: hostnameReg
