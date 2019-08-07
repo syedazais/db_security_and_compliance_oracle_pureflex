@@ -8,24 +8,30 @@
    - name: grdapi command
      set_fact:
       grdapi_command: ps -ef|grep java
+      
       shell: grdapi_command >> test.log
       register: grdapi_command
       shell: cat test.log
       register: cat
       become: yes
-   - name: print results
+      
+   - name: print grdapi_command and cat
      debug: 
       var: grdapi_command
       var: cat
-   - name: print hostname
+      
+   - name: execute hostname
      command: hostname
      register: hostnameReg
+     
    - name: print hostname 
      debug:
       var: hostnameReg
+      
    - name: get the memtotalkb
      shell: cat /proc/meminfo
      register: meminfo
-   - name: print results
+     
+   - name: print meminfo
      debug: 
       var: meminfo 
