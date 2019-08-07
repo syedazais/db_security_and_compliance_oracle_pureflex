@@ -15,3 +15,9 @@
    - name: print results
      debug: 
       var: grdapi_command
+      
+   - name: print cat   
+   - command: 'cat test.log'
+     register: cat
+   - debug:
+      var: cat
